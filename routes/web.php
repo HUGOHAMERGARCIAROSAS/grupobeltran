@@ -5,6 +5,7 @@ use App\User;
 use App\JhonatanPermission\Models\Role;
 use App\JhonatanPermission\Models\Permission;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,4 +68,7 @@ Route::put('users/delete/{id}', 'Admin\UserController@update1')->name('users.upd
 
 Route::resource('/documentosP', 'Admin\DocumentoPController')->names('documentosP');
 Route::put('documentosP/delete/{id}', 'Admin\DocumentoPController@update1')->name('documentosP.update1');
+
+//DOCUMENTOS DE VEHÍCULO
 Route::resource('/documentosV', 'Admin\DocumentoVController')->names('documentosV');
+Route::put('documentosV/delete/{id}', 'Admin\DocumentoVController@update1')->name('documentosV.update1');

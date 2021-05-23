@@ -9,7 +9,7 @@ use App\User;
 use App\Models\Role_user;
 use App\Models\DocumentoP;
 use Illuminate\Support\Facades\Gate;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class DocumentoPController extends Controller
 {
@@ -22,6 +22,7 @@ class DocumentoPController extends Controller
     {
         Gate::authorize('haveaccess','documentosP.index');
         $documentosP = DocumentoP::where('estado','1')->get();
+        
         $users = $users = DB::table('users')
         ->join('role_user', 'users.id', '=', 'role_user.user_id')
         ->join('roles', 'role_user.role_id', '=', 'roles.id')

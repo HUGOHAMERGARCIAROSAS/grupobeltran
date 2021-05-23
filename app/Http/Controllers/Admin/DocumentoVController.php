@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\DocumentoV;
 use Illuminate\Http\Request;
 use App\Permission\Role;
 use App\User;
 use App\Models\Role_user;
+use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Gate;
 
 class DocumentoVController extends Controller
@@ -19,9 +21,10 @@ class DocumentoVController extends Controller
     public function index()
     {
         Gate::authorize('haveaccess','documentosV.index');
-        $users = User::with('roles')->where('tipo','1')->get();
-        $roles=Role::orderBy('name')->get();
-        return view('pages.documentov.index')->with(compact('users','roles'));
+        $documentosV = DocumentoV::where('estado','1')->get();
+        //$documentosV = DocumentoV::all();     
+        $vehiculos=Vehiculo::all();
+        return view('pages.documentov.index')->with(compact('documentosV','vehiculos'));
     }
 
     /**
@@ -42,7 +45,25 @@ class DocumentoVController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $documentoV = new DocumentoV();
+        $documentoV->vehiculo_id = $request->vehiculo_id;
+        $documentoV->tipo_documento = $request->tipo_documento;
+        $documentoV->documento = $request->documento;
+        $documentoV->fecha_emision = $request->fecha_emision;
+        $documentoV->fecha_vencimiento = $request->fecha_vencimiento;
+        $documentoV->activo = 1;
+        $documentoV->estado = 1;
+        // dd($request->file('archivos'));
+        if ($request->file('archivos')) {
+            // dd($request->file('archivos'));
+            $file = $request->file('archivos');
+            $name = 'documento_vehiculo_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/documentos'.'/'.'vehiculo'.'/';
+            $file->move($path, $name);
+            $documentoV->archivos = $name;
+        }
+        $documentoV->save();
+        return back();
     }
 
     /**
@@ -76,7 +97,25 @@ class DocumentoVController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $documentoV = documentoV::findOrFail($id);
+        $documentoV->vehiculo_id = $request->vehiculo_id;
+        $documentoV->tipo_documento = $request->tipo_documento;
+        $documentoV->documento = $request->documento;
+        $documentoV->fecha_emision = $request->fecha_emision;
+        $documentoV->fecha_vencimiento = $request->fecha_vencimiento;
+        $documentoV->activo = 1;
+        $documentoV->estado = 1;
+        // dd($request->file('archivos'));
+        if ($request->file('archivos')) {
+            // dd($request->file('archivos'));
+            $file = $request->file('archivos');
+            $name = 'documento_personal_' . time() . '.' . $file->getClientOriginalExtension();
+            $path = public_path() . '/documentos'.'/'.'vehiculo'.'/';
+            $file->move($path, $name);
+            $documentoV->archivos = $name;
+            }
+        $documentoV->save();
+        return back();
     }
 
     /**
@@ -88,5 +127,13 @@ class DocumentoVController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function update1(Request $request,$id)
+    {
+        $documentoV = DocumentoV::findOrFail($id);
+        $documentoV->estado  = 0;
+        $documentoV->usuario_deleted  = $request->usuario_deleted;
+        $documentoV->save();
+        return back();
     }
 }

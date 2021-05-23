@@ -10,24 +10,13 @@
             <div class="card" style="background: #FFFFFF">
                 <div class="header" >
                     <div style="float: left">
-                        <h2>CLIENTES</h2>
+                        <h2>DOCUMENTOS VEHÍCULO</h2>
                     </div>
                     <div style="float: right">
-                        <button type="button" class="btn btn-warning" style="height: 40px" data-toggle="modal" data-target="#registerCliente">
-                            <i class="fa fa-plus"></i> NUEVO CLIENTE
+                        <button type="button" class="btn btn-warning" style="height: 40px" data-toggle="modal" data-target="#registerDocumentoV">
+                            <i class="fa fa-plus"></i> NUEVO DOCUMENTO
                         </button>
                     </div>
-                </div>
-                <div class="header" style="padding-top: 25px">
-                    <div class="buttons" style="float: right">
-                        <a href="{{route('clientes.export.pdf')}}"  class="btn btn-warning"><i class="fa fa-download"></i> PDF</a>
-                        <a href="{{route('clientes.export.excel')}}"  class="btn btn-warning">
-                            <i class="fa fa-download"></i> EXCEL</a>
-                        <a href="#"  class="btn btn-warning" data-toggle="modal" data-target="#importExcel">
-                            <i class="fa fa-upload"></i>
-                            EXCEL</a>
-                        
-                    </div>                        
                 </div>
                 <div class="body">
                     <div class="table-responsive">
@@ -35,34 +24,34 @@
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Razón Social</th>
+                                    <th>Placa</th>
                                     <th>Tipo Documento</th>
-                                    <th>Dirección Carga</th>
-                                    <th>Dirección Entrega</th>
+                                    <th>Documento</th>
+                                    <th>Archivo</th>
+                                    <th>Fecha Emisión</th>
+                                    <th>Fecha Vencimiento</th>
+                                    <th>Estado</th>
                                     <th>Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($clientes as $key=>$item)
+                                @foreach ($documentosV as $key=>$item)
                                 <tr>
                                     <td>{{$key+1}}</td>
-                                    <td>{{$item->razon_social}}</td>
-                                    @if ($item->tipo_documento=='1') 
-                                    <td>DNI: {{$item->documento}}</td>
+                                    <td>{{$item->vehiculo->placa}}</td>
+                                    <td>{{$item->tipo_documento}}</td>
+                                    <td>{{$item->documento}}</td>
+                                    <td><a href="{{asset('/documentos/vehiculo/'.$item->archivos)}}"><i class="fa fa-download"></i> Descargar Documento</a></td>
+                                    <td>{{date("d-m-Y", strtotime($item->fecha_emision))}}</td>
+                                    <td>{{date("d-m-Y", strtotime($item->fecha_vencimiento))}}</td>
+                                    @if ($item->estado==1)
+                                       <td> <a class="btn btn-outline-success">Activo</a> </td> 
                                     @endif
-                                    @if ($item->tipo_documento=='2') 
-                                    <td>RUC: {{$item->documento}}</td>
-                                    @endif
-                                    @if ($item->tipo_documento=='3') 
-                                    <td>CE: {{$item->documento}}</td>
-                                    @endif
-                                    <td>{{$item->direccion_carga}}</td>
-                                    <td>{{$item->direccion_entrega}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#editarCliente{{$item->id}}">
+                                        <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#editarDocumentov{{$item->id}}">
                                             <i class="fa fa-plus"></i>
                                         </button>
-                                        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#eliminarCliente{{$item->id}}">
+                                        <button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#eliminarDocumentov{{$item->id}}">
                                             <i class="fa fa-trash"></i>
                                         </button>
                                         
@@ -77,10 +66,9 @@
             </div>
         </div>
     </div>
-    @include('pages.clientes.modals.register_cliente')
-    @include('pages.clientes.modals.editar_cliente')
-    @include('pages.clientes.modals.eliminar_cliente')
-    @include('pages.clientes.modals.cargar_excel')
+    @include('pages.documentov.modals.register_documentov')
+    @include('pages.documentov.modals.editar_documentov')
+    @include('pages.documentov.modals.eliminar_documentov')
 </div>
 @endsection
 @section('js')
