@@ -73,6 +73,12 @@
                             <a href="#Authentication" class="has-arrow"><i class="icon-lock"></i> <span>UTILIDAD</span></a>
                         </li>
                         <li>
+                            <a href="{{route('proveedores.index')}}" class="has-arrow"><i class="icon-folder"></i> <span>PROVEEDORES</span></a>
+                        </li>
+                        <li>
+                            <a href="{{route('unidades.index')}}" class="has-arrow"><i class="icon-puzzle"></i> <span>UNIDADES</span></a>
+                        </li>
+                        <li>
                             <a href="#" class="has-arrow"><i class="icon-globe"></i> <span>DOCUMENTOS</span></a>
                             <ul>
                                 @can('haveaccess','documentosP.index')

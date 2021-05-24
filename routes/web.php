@@ -72,3 +72,20 @@ Route::put('documentosP/delete/{id}', 'Admin\DocumentoPController@update1')->nam
 //DOCUMENTOS DE VEHÍCULO
 Route::resource('/documentosV', 'Admin\DocumentoVController')->names('documentosV');
 Route::put('documentosV/delete/{id}', 'Admin\DocumentoVController@update1')->name('documentosV.update1');
+
+
+//UNIDADES
+
+Route::resource('/unidades', 'Admin\UnidadController')->names('unidades');
+Route::put('/unidades/delete/{id}', 'Admin\UnidadController@update1')->name('unidad.update1');
+Route::post('uimport-list-excel', 'Admin\UnidadController@importExcel')->name('unidades.import.excel');
+Route::get('uexport-list-excel', 'Admin\UnidadController@exportExcel')->name('unidades.export.excel');
+Route::get('uexport-list-pdf', 'Admin\UnidadController@exportPdf')->name('unidades.export.pdf');
+
+//PROVEEDORES
+
+Route::resource('/proveedores', 'Admin\ProveedorController')->names('proveedores');
+Route::put('/proveedores/delete/{id}', 'Admin\ProveedorController@update1')->name('proveedores.update1');
+Route::post('primport-list-excel', 'Admin\ProveedorController@importExcel')->name('proveedores.import.excel');
+Route::get('prexport-list-excel', 'Admin\ProveedorController@exportExcel')->name('proveedores.export.excel');
+Route::get('prexport-list-pdf', 'Admin\ProveedorController@exportPdf')->name('proveedores.export.pdf');

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Cliente;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+
+        $clientes = Cliente::where('activo','1')->count();
+        return view('home')->with(compact('clientes'));
     }
 }
