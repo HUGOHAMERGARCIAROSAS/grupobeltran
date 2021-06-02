@@ -46,6 +46,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->dni = $request->dni;
+        $user->FechaCaducidad=$request->fechaCaducidad;
         $user->fecha_ingreso = $request->fecha_ingreso;
         $user->telefono = $request->telefono;
         $user->password = bcrypt($request->password);

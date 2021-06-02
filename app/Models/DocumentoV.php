@@ -11,7 +11,7 @@ class DocumentoV extends Model
     protected $table = 'documento_vehiculo';
     protected $fillable = [
         'vehiculo_id', 'tipo_documento', 'documento','archivos',
-        'fecha_emision','fecha_vencimiento','estado','activo'
+        'fecha_emision','fecha_vencimiento','estado','activo','fechaTramite'
     ];
 
     protected $dates = ['fecha_emision','fecha_vencimiento'];

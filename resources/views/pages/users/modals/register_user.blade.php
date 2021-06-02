@@ -41,6 +41,12 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
+                        <label for="">Fecha de caducidad:</label>
+                        <input type="date" class="form-control" name="fechaCaducidad">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
                         <label for="">Teléfono:</label>
                         <input type="text" class="form-control" name="telefono">
                     </div>

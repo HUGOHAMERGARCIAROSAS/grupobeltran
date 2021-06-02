@@ -28,10 +28,15 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="">Tipo de Documento:</label>
-                        <input type="text" class="form-control" name="tipo_documento">
+                        <select name="tipo_documento" id="tipo_documento" class=" form-control-sm" onchange="TipodeDocumento();" >
+                            <option value="1" selected>Soat</option>
+                            <option value="2">Revisión tecnica</option>
+                            <option value="3">Bonificación Neumatica</option>
+                            <option value="4">Tarjetas internacionales</option> 
+                        </select>
                     </div>
                     <div class="col-md-6">
-                        <label for="">Documento:</label>
+                        <label id="documento"></label>
                         <input type="text" class="form-control" name="documento">
                     </div>
                 </div>
@@ -47,8 +52,28 @@
                         <input type="date" class="form-control" name="fecha_emision">
                     </div>
                     <div class="col-md-6">
-                        <label for="">Fecha de Vencimiento:</label>
+                        <label for="">Fecha de Caducidad:</label>
                         <input type="date" class="form-control" name="fecha_vencimiento">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="">Fecha de Tramite</label>
+                        <select name="fechaTramite" id="fechaTramite" class=" form-control">
+                            <option value="N">Seleccionar:</option>
+                            <option value="Ene">Enero</option>
+                            <option value="Feb">Febrero</option>
+                            <option value="Mar">Marzo</option>
+                            <option value="Abr">Abril</option>
+                            <option value="May">Mayo</option>
+                            <option value="Jun">Junio</option>
+                            <option value="Jul">Julio</option>
+                            <option value="Ago">Agosto</option>
+                            <option value="Sep">Septiembre</option>
+                            <option value="Oct">Octubre</option>
+                            <option value="Nov">Noviembre</option>
+                            <option value="Dic">Diciembre</option>
+                        </select>
                     </div>
                 </div>
             </div>
@@ -60,3 +85,18 @@
       </div>
     </div>
   </div>
+  @section('js')
+    <script>
+        $(document).ready(function(e){
+           document.getElementById('documento').innerHTML='Nº de Poliza';
+        });
+        function TipodeDocumento(){
+            let tipoDocumento= document.getElementById('fechaTramite').value ;
+            if(tipoDocumento==1){
+                document.getElementById('documento').innerHTML='Nº de Poliza';
+            }else{
+                document.getElementById('documento').innerHTML='Nº de Documento';
+            }
+        }
+    </script>
+  @stop

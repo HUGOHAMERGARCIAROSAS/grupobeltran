@@ -53,6 +53,7 @@ class DocumentoVController extends Controller
         $documentoV->fecha_vencimiento = $request->fecha_vencimiento;
         $documentoV->activo = 1;
         $documentoV->estado = 1;
+        $documentoV->fechaTramite=$request->fechaTramite;
         // dd($request->file('archivos'));
         if ($request->file('archivos')) {
             // dd($request->file('archivos'));
