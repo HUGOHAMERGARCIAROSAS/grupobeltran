@@ -11,7 +11,7 @@ use Maatwebsite\Excel\Concerns\ToModel;
 use App\Imports\ClientesImport;
 use App\Exports\ClientesExport;
 use Maatwebsite\Excel\Concerns\WithHeadings;
-use PDF;
+use Barryvdh\DomPDF\PDF;
 use Illuminate\Support\Facades\Gate;
 
 

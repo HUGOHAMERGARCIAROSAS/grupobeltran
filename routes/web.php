@@ -89,3 +89,13 @@ Route::put('/proveedores/delete/{id}', 'Admin\ProveedorController@update1')->nam
 Route::post('primport-list-excel', 'Admin\ProveedorController@importExcel')->name('proveedores.import.excel');
 Route::get('prexport-list-excel', 'Admin\ProveedorController@exportExcel')->name('proveedores.export.excel');
 Route::get('prexport-list-pdf', 'Admin\ProveedorController@exportPdf')->name('proveedores.export.pdf');
+
+
+//ORDENES DE TRABAJO
+Route::resource('/ordenTrabajo','OrdenTrabajoController')->names('viajes');
+
+//CAJA
+Route::resource('/caja','CajaController')->names('Caja');
+
+//ABASTECIMIENTO DE COMBUSTIBLE
+Route::resource('combustible','CombustibleController')->names('abastecimientoCombustible');
