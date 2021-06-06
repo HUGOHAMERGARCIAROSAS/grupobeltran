@@ -28,19 +28,21 @@
                                 </tr>
                             </thead>
                             <tbody> 
+                                @foreach ($orders as $key=>$item)
                                 <tr>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$item->id}}</td>
+                                    <td>{{$item->clientes->razon_social}}</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$item->monto}}</td>
+                                    <td>{{$item->estado}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#registerPago"> 
+                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#registerPago{{$item->id}}"> 
                                             <i class="fa fa-money"></i>
                                          </button>
                                     </td>
-                                </tr>                               
+                                </tr> 
+                                @endforeach                              
                             </tbody>
                         </table>
                     </div>

@@ -50,6 +50,7 @@
                                 @can('haveaccess','tarifas.index')
                                 <li class="active"><a href="{{route('tarifas.index')}}">Tarifas</a></li>
                                 @endcan
+                                <li class="active"><a href="{{route('abastecimientoCombustible.index')}}">Abastecimiento de Combustible</a></li>
                             </ul>
                         </li>
                         <li>
@@ -64,6 +65,13 @@
                                 @can('haveaccess','users.index')
                                 <li class="active"><a href="{{route('users.index')}}">Usuarios</a></li>
                                 @endcan
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#Widgets" class="has-arrow"><i class="icon-puzzle"></i> <span>OPERACIONES</span></a>
+                            <ul>
+                                <li class="active"><a href="{{route('viajes.index')}}">Orden de Trabajo</a></li>
+                                <li class="active"><a href="{{route('cajas.index')}}">Caja</a></li>
                             </ul>
                         </li>
                         <li>

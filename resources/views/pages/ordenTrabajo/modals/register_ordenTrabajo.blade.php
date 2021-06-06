@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('viajes.store')}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-body">
                 <style>
@@ -15,24 +15,25 @@
                         padding-top: 10px;
                     }
                 </style>
+                <input type="hidden" name="usuario_created" value="{{auth()->user()->email}}">
                 <div class="row">
                     <div class="col-md-4">
                         <label>Fecha Inicio</label>
-                        <input type="date" class=" form-control form-control-sm">
+                        <input type="date" class=" form-control form-control-sm" name="fecha_inicio">
                     </div>
                     <div class="col-md-4">
                         
                     </div>
                     <div class="col-md-4">
                         <label>Fecha Fin</label>
-                        <input type="date" class=" form-control form-control-sm">
+                        <input type="date" class=" form-control form-control-sm" name="fecha_fin">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <label>Empresa</label>
-                        <select name="sede" id="sede" class=" form-control">
-                            <option value="TRBT" selected>Tranporte Beltran</option>
+                        <select name="empresa_id" class=" form-control">
+                            <option value="1" selected>Transporte Beltran</option>
                         </select>
                     </div>
                     <div class="col-md-4">
@@ -45,7 +46,7 @@
                     </div>
                     <div class="col-md-4">
                         <label>Conductor</label>
-                        <select name="chofer_id" id="" class="form-control">
+                        <select name="conductor_id" id="" class="form-control">
                             @foreach ($conductores as $conductor)
                                 <option value="{{$conductor->id}}">{{$conductor->name}}</option>
                             @endforeach
@@ -71,41 +72,43 @@
                     </div>
                     <div class=" col-md-4">
                         <label>Producto</label>
-                        <input type="text" class=" form-control form-control-sm" >
+                        <input type="text" class=" form-control form-control-sm" name="producto" >
                     </div>
                 </div>
                 <div class="row">
                     <div class=" col-md-4">
                         <label>Peso inicial</label>
-                        <input type="text" class=" form-control form-control-sm">
+                        <input type="text" class=" form-control form-control-sm" name="peso_inicial">
                     </div>
                     <div class=" col-md-4">
                         <label>Monto</label>
-                        <input type="text" class=" form-control form-control-sm">
+                        <input type="text" class=" form-control form-control-sm" name="monto">
                     </div>
                     <div class=" col-md-4">
                        <label>Total Soles</label> 
-                       <input type="text" class=" form-control form-control-sm">
+                       <input type="text" class=" form-control form-control-sm" name="total_soles">
                     </div>
                 </div>
                 <div class="row">
                     <div style="margin: auto">
-                        <input type="checkbox">
+                        <input type="checkbox"  id="isAgeSelected">
                         <label>Terceros</label>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="txtAge" style="display:none">
                     <div class=" col-md-4">
                         <label >Empresa Tercera</label>
-                        <select></select>
+                        <select name="empresa_tercera_id" class="form-control">
+                            <option value="1">Empresa 1</option>
+                        </select>
                     </div>
                     <div class=" col-md-4">
                         <label >Precio Tercero</label>
-                        <input type="text" class=" form-control form-control-sm">
+                        <input type="text" class=" form-control form-control-sm" name="precio_tercero">
                     </div>
                     <div class=" col-md-4">
                         <label >Monto Tercero</label>
-                        <input type="text"  class=" form-control form-control-sm">
+                        <input type="text"  class=" form-control form-control-sm" name="monto_tercero">
                     </div>
                 </div>
             </div>
@@ -113,6 +116,7 @@
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
+
         </form>
       </div>
     </div>

@@ -23,7 +23,6 @@
                         <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                             <thead>
                                 <tr>
-                                    <th>#</th>
                                     <th>Orden de trabajo</th>
                                     <th>Ruta</th>
                                     <th>Galones</th>
@@ -32,15 +31,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td>
-                                    </td>
-                                </tr>
+                                @foreach ($combustibles as $item)
+                                    <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->lugar}}</td>
+                                        <td>{{$item->galones}}</td>
+                                        <td>{{$item->precio}}</td>
+                                        <td>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 
                             </tbody>
                         </table>

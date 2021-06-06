@@ -1,4 +1,5 @@
-<div class="modal fade" id="registerKilometrosPesos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($orders as $item)
+<div class="modal fade" id="registerKilometrosPesos{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -7,7 +8,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('ordenControl.store')}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-body">
                 <style>
@@ -20,13 +21,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>KM Inicial</label>
-                            <input type="date" class=" form-control form-control-sm">
+                            <input type="text" class=" form-control form-control-sm" name="km_inicial">
                         </div>
                         <div class="col-md-6">
                             <label>KM Final</label>
-                            <input type="date" class=" form-control form-control-sm">
+                            <input type="text" class=" form-control form-control-sm" name="km_final" >
                         </div>
                     </div>
+                    <input type="hidden" class=" form-control form-control-sm" name="order_id" value="{{$item->id}}">
                     <div class="row">
                         <div class="col-md-6">
                         </div>
@@ -41,11 +43,11 @@
                     <div class="row">
                         <div class="col-md-6">
                             <label>Peso Inicial</label>
-                            <input type="date" class=" form-control form-control-sm">
+                            <input type="text" class=" form-control form-control-sm" name="peso_inicial" >
                         </div>
                         <div class="col-md-6">
                             <label>Peso Final</label>
-                            <input type="date" class=" form-control form-control-sm">
+                            <input type="text" class=" form-control form-control-sm" name="peso_final">
                         </div>
                     </div>
                 </div> 
@@ -58,3 +60,4 @@
       </div>
     </div>
   </div>
+@endforeach

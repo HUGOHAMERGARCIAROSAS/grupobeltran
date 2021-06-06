@@ -93,9 +93,11 @@ Route::get('prexport-list-pdf', 'Admin\ProveedorController@exportPdf')->name('pr
 
 //ORDENES DE TRABAJO
 Route::resource('/ordenTrabajo','OrdenTrabajoController')->names('viajes');
+Route::post('/ordenTrabajo/orderControl', 'OrdenTrabajoController@createOrderControl')->name('ordenControl.store');
+Route::put('/ordenTrabajo/delete/{id}', 'OrdenTrabajoController@updateEstado')->name('ordenTrabajo.updateEstado');
 
 //CAJA
-Route::resource('/caja','CajaController')->names('Caja');
+Route::resource('/caja','CajaController')->names('cajas');
 
 //ABASTECIMIENTO DE COMBUSTIBLE
 Route::resource('combustible','CombustibleController')->names('abastecimientoCombustible');

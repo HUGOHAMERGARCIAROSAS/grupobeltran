@@ -1,16 +1,18 @@
 @extends('layouts.layout')
 @section('css')
 @include('layouts.css')
+
 @endsection
 @section('content')
 <div class="container-fluid">
     @include('layouts.welcome')
     <div class="row clearfix">
         <div class="col-lg-12">
+            
             <div class="card" style="background: #FFFFFF">
                 <div class="header" >
                     <div style="float: left">
-                        <h2>ÒRDENES DE TRABAJO</h2>
+                        <h2>ÓRDENES DE TRABAJO</h2>
                     </div>
                     <div style="float: right">
                         <button type="button" class="btn btn-warning" style="height: 40px" data-toggle="modal" data-target="#registerOrdenTrabajo">
@@ -50,20 +52,22 @@
                                 </tr>
                             </thead>
                             <tbody> 
+                                @foreach ($orders as $key=>$item)
                                 <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{$key+1}}</td>
+                                    <td>{{$item->clientes->razon_social}}</td>
+                                    <td>{{$item->usuarios->name}}</td> 
+                                    <td>{{$item->vehiculos->placa}}</td> 
+                                    <td>{{$item->rutas->punto_inicial}}</td>
+                                    <td>{{$item->moneda}}</td>
+                                    <td>{{$item->monto}}</td>
+                                    <td>{{$item->estado}}</td>
                                     <td>
-                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#registerKilometrosPesos"> <i class="fa fa-eye"></i> </button>
-                                        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#updateOrdenTrabajo"> <i class=" fa fa-edit"></i> </button>
+                                        <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#registerKilometrosPesos{{$item->id}}"> <i class="fa fa-eye"></i> </button>
+                                        <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#updateOrdenTrabajo{{$item->id}}"> <i class=" fa fa-edit"></i> </button>
                                     </td>
-                                </tr>                               
+                                </tr>
+                                @endforeach                            
                             </tbody>
                         </table>
                     </div>
@@ -77,5 +81,17 @@
 </div>
 @endsection
 @section('js')
-@include('layouts.js')    
+@include('layouts.js') 
+
+<script>
+     if(document.getElementById('isAgeSelected').checked) {
+    $("#txtAge").show();
+} else {
+    $("#txtAge").hide();
+}
+
+$('#isAgeSelected').click(function() {
+    $("#txtAge").toggle(this.checked);
+});
+</script>
 @endsection

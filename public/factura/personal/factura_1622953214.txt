@@ -1,0 +1,18 @@
+REQUERIMIENTOS DE SOFTWARE TRANSPORTES
+--------------------------------------
+* Registro de clientes.
+* Control de unidades.
+  - Registro de conductores y unidades 
+  - Estado de conductores.
+  - Estado de unidades (en tráfico, cargando, etc.).
+* Registro de carga entregada
+  - Guías de remisión (unidades y conductores) adjuntas.
+  - Tickets de peaje y combustible adjuntos.
+* Gestión de ingresos y egresos (actualmente trabajados en excel).
+* Reportes (con filtros) que muestren detalles de cada viaje.
+* Reportes de viajes liquidados o finalizados.
+* Control de mantenimiento de unidades.
+  - Alertas para mantenimiento de unidades.
+  --SI ES POSIBLE CONECTAR CON LA EMPRESA DE SERVICIOS DE GPS--
+* Indicadores de gestión.
+

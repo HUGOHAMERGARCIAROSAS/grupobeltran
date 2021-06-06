@@ -7,7 +7,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="{{route('abastecimientoCombustible.store')}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="modal-body">
                 <style>
@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Lugar</label>
-                        <select class=" form-control form-control-sm">
+                        <select class=" form-control form-control-sm" name="lugar">
                             <option value="1">Otros</option>
                             <option value="2">Trujillo</option>
                             <option value="3">Bagua</option>
@@ -27,21 +27,21 @@
                     </div>
                     <div class="col-md-6">
                         <label>Galones</label>
-                        <input type="text" class=" form-control form-control-sm">
+                        <input type="text" class=" form-control form-control-sm" name="galones">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <label>Precio</label>
-                        <input type="text" class=" form-control form-control-sm">
+                        <input type="text" class=" form-control form-control-sm" name="precio">
                     </div>
                     <div class="col-md-4">
                         <label>Nº de Ticket</label>
-                        <input type="text" class=" form-control form-control-sm">
+                        <input type="text" class=" form-control form-control-sm" name="nro_ticket">
                     </div>
                     <div class="col-md-4">
                         <label>Ticket</label>
-                        <input type="file" class="form-control form-control-sm">
+                        <input type="file" class="form-control form-control-sm" name="ticket">
                     </div>
                 </div>
             </div>
