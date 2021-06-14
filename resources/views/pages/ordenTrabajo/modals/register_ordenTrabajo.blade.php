@@ -22,11 +22,15 @@
                         <input type="date" class=" form-control form-control-sm" name="fecha_inicio">
                     </div>
                     <div class="col-md-4">
-                        
-                    </div>
-                    <div class="col-md-4">
                         <label>Fecha Fin</label>
                         <input type="date" class=" form-control form-control-sm" name="fecha_fin">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Moneda</label>
+                        <select name="empresa_id" class=" form-control">
+                            <option value="1" selected>PEN</option>
+                            <option value="0" selected>USD</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">

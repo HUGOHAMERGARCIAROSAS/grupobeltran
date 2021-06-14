@@ -29,6 +29,19 @@ class OrdenTrabajoController extends Controller
     {
         //
     }
+
+    public function buscar(Request $request)
+    {
+
+        $fecha_inicio = $request->fecha_ini;
+        $fecha_fin = $request->fecha_fin;
+        
+        $orders = Order::whereBetween('created_at', [$request->fecha_ini, $request->fecha_fin])->get();
+        // dd($reporte);
+        return view('pages.ordenTrabajo.consulta')->with(compact('orders','fecha_inicio','fecha_fin'));
+
+    }
+
     public function store(Request $request)
     {
         $order = new Order();
@@ -43,6 +56,7 @@ class OrdenTrabajoController extends Controller
         $order->peso_inicial  = $request->peso_inicial;
         $order->monto  = $request->monto;
         $order->total  = $request->total;
+        $order->moneda  = $request->moneda;
         $order->total_soles  = $request->total_soles;
         $order->terceros_check  = $request->terceros_check;
         $order->empresa_tercera_id  = $request->empresa_tercera_id;
@@ -74,6 +88,7 @@ class OrdenTrabajoController extends Controller
         $order->precio_tercero  = $request->precio_tercero;
         $order->monto_tercero  = $request->monto_tercero;
         $order->usuario_created  = $request->usuario_created;
+        $order->moneda  = $request->moneda;
         $order->activo  = 1;
         $order->estado  = 1;
 

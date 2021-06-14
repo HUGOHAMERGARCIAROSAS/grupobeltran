@@ -101,3 +101,6 @@ Route::resource('/caja','CajaController')->names('cajas');
 
 //ABASTECIMIENTO DE COMBUSTIBLE
 Route::resource('combustible','CombustibleController')->names('abastecimientoCombustible');
+
+
+Route::post('/reporte-operaciones', 'OrdenTrabajoController@buscar')->name('reporte.operaciones.consultar');

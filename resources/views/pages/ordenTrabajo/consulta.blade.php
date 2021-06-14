@@ -14,30 +14,17 @@
                         <h2>ÓRDENES DE TRABAJO</h2>
                     </div>
                     <div style="float: right">
-                        <button type="button" class="btn btn-warning" style="height: 40px" data-toggle="modal" data-target="#registerOrdenTrabajo">
-                            <i class="fa fa-plus"></i> NUEVA ORDEN
-                        </button>
+                        <a href="{{route('viajes.index')}}" class="btn btn-warning" style="height: 40px">
+                            <i class="fa fa-arrow-left"></i> VOLVER 
+                        </a>
+                    </div>
+                </div>
+                <div class="header">
+                    <div style="text-center">
+                        Rango Seleccionado: <strong>Fecha Inicio: {{$fecha_inicio}} | Fecha Fin: {{$fecha_fin}} </strong>
                     </div>
                 </div>
                 <div class="body">
-                    <form action="{{route('reporte.operaciones.consultar')}}" method="POST">
-                        {{ csrf_field() }}
-                        <div class="row">
-                            <div class="col-3">
-                                <label>Fecha Inicio</label>
-                                <input type="date" class="form-control" name='fecha_ini'>
-                            </div> 
-                            <div class="col-3">
-                                <label>Fecha Fin</label>
-                                <input type="date" class="form-control" name='fecha_fin'>
-                            </div> 
-                            <div class="col-3">
-                                <button class="btn btn-warning" type="submit" style="margin-top:30px">
-                                    <i class=" fa fa-search"></i>
-                                </button>
-                            </div>  
-                        </div>
-                    </form>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                             <thead>
@@ -50,7 +37,7 @@
                                     <th class="text-center">Moneda</th>
                                     <th class="text-center">Importe</th>
                                     <th class="text-center">Estado</th>
-                                    <th class="text-center">Opciones</th>
+                                    {{-- <th class="text-center">Opciones</th> --}}
                                 </tr>
                             </thead>
                             <tbody> 
@@ -74,10 +61,10 @@
                                     @if ($item->estado==0)
                                     <td class="text-center">CANCELADO</td>
                                     @endif
-                                    <td class="text-center">
+                                    {{-- <td class="text-center">
                                         <button type="button" class="btn btn-sm btn-info" data-toggle="modal" data-target="#registerKilometrosPesos{{$item->id}}"> <i class="fa fa-eye"></i> </button>
                                         <button type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#updateOrdenTrabajo{{$item->id}}"> <i class=" fa fa-edit"></i> </button>
-                                    </td>
+                                    </td> --}}
                                 </tr>
                                 @endforeach                            
                             </tbody>
@@ -87,9 +74,9 @@
             </div>
         </div>
     </div>
-    @include('pages.ordenTrabajo.modals.register_ordenTrabajo')
+    {{-- @include('pages.ordenTrabajo.modals.register_ordenTrabajo')
     @include('pages.ordenTrabajo.modals.register_kilometros_pesos')
-    @include('pages.ordenTrabajo.modals.update_ordenTrabajo')
+    @include('pages.ordenTrabajo.modals.update_ordenTrabajo') --}}
 </div>
 @endsection
 @section('js')

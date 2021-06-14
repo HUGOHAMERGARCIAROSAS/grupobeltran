@@ -14,7 +14,7 @@ class Order extends Model
         'monto','total','total_soles','terceros_check','empresa_tercera_id',
         'precio_tercero','monto_tercero','created_at','updated_at',
         'usuario_insert','usuario_deleted','usuario_updated','activo',
-        'estado'
+        'estado','moneda'
     ];
 
     protected $dates = ['fecha_inicio','fecha_fin'];
