@@ -1,7 +1,7 @@
 <div id="left-sidebar" class="sidebar">
     <div class="sidebar-scroll">
         <div class="text-center facet_sidebar" style="padding: 20px 0 10px 0">
-            <a href=""><img src="{{asset('loggo.png')}}" alt="TRB" class="img-responsive logo "></a>                
+            <a href="{{route('/')}}"><img src="{{asset('loggo.png')}}" alt="TRB" class="img-responsive logo "></a>                
         </div>
         <div class="user-account">
             <img src="{{asset('img/use.jpg')}}" class="rounded-circle user-photo" alt="User Profile Picture">

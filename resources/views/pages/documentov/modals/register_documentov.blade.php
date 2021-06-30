@@ -85,18 +85,3 @@
       </div>
     </div>
   </div>
-  @section('js')
-    <script>
-        $(document).ready(function(e){
-           document.getElementById('documento').innerHTML='Nº de Poliza';
-        });
-        function TipodeDocumento(){
-            let tipoDocumento= document.getElementById('fechaTramite').value ;
-            if(tipoDocumento==1){
-                document.getElementById('documento').innerHTML='Nº de Poliza';
-            }else{
-                document.getElementById('documento').innerHTML='Nº de Documento';
-            }
-        }
-    </script>
-  @stop

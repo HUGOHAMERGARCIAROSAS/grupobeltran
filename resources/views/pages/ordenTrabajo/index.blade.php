@@ -43,6 +43,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th class="text-center">Orden de Trabajo</th>
                                     <th class="text-center">Cliente</th>
                                     <th class="text-center">Conductor</th>
                                     <th class="text-center">Vehículo</th>
@@ -57,6 +58,7 @@
                                 @foreach ($orders as $key=>$item)
                                 <tr>
                                     <td class="text-center">{{$key+1}}</td>
+                                    <td class="text-center">{{str_pad($item->id, 6, "0", STR_PAD_LEFT)}}</td>
                                     <td class="text-center">{{$item->clientes->razon_social}}</td>
                                     <td class="text-center">{{$item->usuarios->name}}</td> 
                                     <td class="text-center">{{$item->vehiculos->placa}}</td> 
@@ -106,4 +108,5 @@ $('#isAgeSelected').click(function() {
     $("#txtAge").toggle(this.checked);
 });
 </script>
+
 @endsection

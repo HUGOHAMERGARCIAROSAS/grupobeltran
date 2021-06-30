@@ -19,6 +19,12 @@ class CajaController extends Controller
         return view('pages.caja.index')->with(compact('orders'));
     }
 
+    public function edit($id, Request $request)
+    {
+        $item = Order::findOrFail($id);
+        return view('pages.caja.edit')->with(compact('item'));
+    }
+
     public function store(Request $request){
         $caja = new Caja();
         $caja->cliente_id  = $request->cliente_id;

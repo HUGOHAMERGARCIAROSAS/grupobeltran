@@ -23,21 +23,27 @@
                         <table class="table table-bordered table-hover js-basic-example dataTable table-custom">
                             <thead>
                                 <tr>
-                                    <th>Orden de trabajo</th>
-                                    <th>Ruta</th>
-                                    <th>Galones</th>
-                                    <th>Total</th>
-                                    <th>Opciones</th>
+                                    <th class="text-center">Orden de trabajo</th>
+                                    <th class="text-center">Ruta</th>
+                                    <th class="text-center">Galones</th>
+                                    <th class="text-center">Total</th>
+                                    <th class="text-center">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($combustibles as $item)
                                     <tr>
-                                        <td>{{$item->id}}</td>
-                                        <td>{{$item->lugar}}</td>
-                                        <td>{{$item->galones}}</td>
-                                        <td>{{$item->precio}}</td>
-                                        <td>
+                                        <td class="text-center">{{str_pad($item->orders->id, 6, "0", STR_PAD_LEFT)}}</td>
+                                        <td class="text-center">{{$item->rutas->punto_inicial}} - {{$item->rutas->punto_final}}</td>
+                                        <td class="text-center">{{$item->galones}}</td>
+                                        <td class="text-center">{{$item->precio}}</td>
+                                        <td class="text-center">
+                                            <button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#editar_Abastecimientocombustible{{$item->id}}">
+                                                <i class="fa fa-plus"></i>
+                                            </button>
+                                            <button type="submit" class="btn btn-danger"  data-toggle="modal" data-target="#eliminar_Abastecimientocombustible{{$item->id}}">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -50,6 +56,8 @@
         </div>
     </div>
     @include('pages.combustible.modals.register_Abastecimientocombustible')
+    @include('pages.combustible.modals.editar_Abastecimientocombustible') 
+    @include('pages.combustible.modals.eliminar_Abastecimientocombustible')
 </div>
 @endsection
 @section('js')

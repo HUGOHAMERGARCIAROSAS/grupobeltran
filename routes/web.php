@@ -101,6 +101,12 @@ Route::resource('/caja','CajaController')->names('cajas');
 
 //ABASTECIMIENTO DE COMBUSTIBLE
 Route::resource('combustible','CombustibleController')->names('abastecimientoCombustible');
-
+Route::put('combustible/delete/{id}', 'CombustibleController@update1')->name('combustible.update1');
 
 Route::post('/reporte-operaciones', 'OrdenTrabajoController@buscar')->name('reporte.operaciones.consultar');
+
+//CLIENTES VIGENTES
+Route::get('clientesv-list-excel', 'HomeController@exportExcelCV')->name('clientes.vigentes.excel');
+Route::get('clientesnv-list-excel', 'HomeController@exportExcelCNV')->name('clientes.novigentes.excel');
+Route::get('clientesof-list-excel', 'HomeController@exportExcelOF')->name('ordenes.facturadas.excel');
+Route::get('clientesnof-list-excel', 'HomeController@exportExcelNoOF')->name('ordenes.no.facturadas.excel');

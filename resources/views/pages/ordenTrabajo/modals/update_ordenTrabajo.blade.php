@@ -106,14 +106,16 @@
                 </div>
                 <div class="row">
                     <div style="margin: auto">
-                        <input type="checkbox">
+                        <input type="checkbox"  id="isAgeSelected">
                         <label>Terceros</label>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" id="txtAge" >
                     <div class=" col-md-4">
                         <label >Empresa Tercera</label>
-                        <select></select>
+                        <select name="empresa_tercera_id" class="form-control">
+                            <option value="1">Empresa 1</option>
+                        </select>
                     </div>
                     <div class=" col-md-4">
                         <label >Precio Tercero</label>

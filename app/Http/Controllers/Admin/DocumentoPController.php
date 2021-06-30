@@ -10,6 +10,9 @@ use App\Models\Role_user;
 use App\Models\DocumentoP;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+
 
 class DocumentoPController extends Controller
 {
@@ -22,7 +25,17 @@ class DocumentoPController extends Controller
     {
         Gate::authorize('haveaccess','documentosP.index');
         $documentosP = DocumentoP::where('estado','1')->get();
-        
+        $date = Carbon::now();
+        $count=0;
+        foreach($documentosP as $key=>$doc){
+            // $resto = $date-$doc->fecha_vencimiento;
+            if($date>$doc->fecha_vencimiento){
+                $count++;
+            }else{
+                $count=0;
+            }
+        }
+        // dd($count);
         $users = $users = DB::table('users')
         ->join('role_user', 'users.id', '=', 'role_user.user_id')
         ->join('roles', 'role_user.role_id', '=', 'roles.id')
@@ -31,7 +44,7 @@ class DocumentoPController extends Controller
         ->get();
         // dd($users);
         $roles=Role::orderBy('name')->get();
-        return view('pages.documentop.index')->with(compact('users','roles','documentosP'));
+        return view('pages.documentop.index')->with(compact('users','roles','documentosP','count','date'));
     }
 
     /**

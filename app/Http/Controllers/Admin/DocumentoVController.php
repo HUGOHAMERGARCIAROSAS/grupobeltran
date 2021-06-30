@@ -10,6 +10,7 @@ use App\User;
 use App\Models\Role_user;
 use App\Models\Vehiculo;
 use Illuminate\Support\Facades\Gate;
+use Carbon\Carbon;
 
 class DocumentoVController extends Controller
 {
@@ -23,8 +24,19 @@ class DocumentoVController extends Controller
         Gate::authorize('haveaccess','documentosV.index');
         $documentosV = DocumentoV::where('estado','1')->get();
         //$documentosV = DocumentoV::all();     
+        $date = Carbon::now();
+        $count=0;
+        foreach($documentosV as $key=>$doc){
+            // $resto = $date-$doc->fecha_vencimiento;
+            if($date>$doc->fecha_vencimiento){
+                $count++;
+            }else{
+                $count=0;
+            }
+        }
+        // dd($count);
         $vehiculos=Vehiculo::all();
-        return view('pages.documentov.index')->with(compact('documentosV','vehiculos'));
+        return view('pages.documentov.index')->with(compact('documentosV','vehiculos','count','date'));
     }
 
     /**

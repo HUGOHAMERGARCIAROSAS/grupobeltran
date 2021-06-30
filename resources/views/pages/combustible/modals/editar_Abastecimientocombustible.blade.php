@@ -1,4 +1,5 @@
-<div class="modal fade" id="registerAbastecimiento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@foreach ($combustibles as $item)
+<div class="modal fade" id="editar_Abastecimientocombustible{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -7,8 +8,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="{{route('abastecimientoCombustible.store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{route('abastecimientoCombustible.update',$item->id)}}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
+            {{ method_field('PUT')}}
             <div class="modal-body">
                 <style>
                     .row{
@@ -20,7 +22,7 @@
                         <label>Lugar</label>
                         <select class=" form-control form-control-sm" name="lugar">
                             @foreach ($rutas as $ruta)
-                            <option value="{{$ruta->id}}">{{$ruta->punto_inicial}} - {{$ruta->punto_final}}</option>
+                            <option value="{{$ruta->id}}" {{$ruta->id == $item->lugar ? 'selected' : ''}}>{{$ruta->punto_inicial}} - {{$ruta->punto_final}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -28,7 +30,7 @@
                         <label>Orden de Pago</label>
                         <select class=" form-control form-control-sm" name="orden_trabajo_id">
                             @foreach ($ordenes as $orden)
-                            <option value="{{$orden->id}}">{{str_pad($orden->id, 6, "0", STR_PAD_LEFT)}}</option>
+                            <option value="{{$orden->id}}" {{$orden->id == $item->orden_trabajo_id ? 'selected' : ''}}>{{str_pad($orden->id, 6, "0", STR_PAD_LEFT)}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -36,17 +38,17 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label>Precio</label>
-                        <input type="text" class=" form-control form-control-sm" name="precio">
+                        <input type="text" class=" form-control form-control-sm" name="precio" value="{{$item->precio}}">
                     </div>
                     <div class="col-md-6">
                         <label>Galones</label>
-                        <input type="text" class=" form-control form-control-sm" name="galones">
+                        <input type="text" class=" form-control form-control-sm" name="galones" value="{{$item->galones}}">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6">
                         <label>Nº de Ticket</label>
-                        <input type="text" class=" form-control form-control-sm" name="nro_ticket">
+                        <input type="text" class=" form-control form-control-sm" name="nro_ticket" value="{{$item->nro_ticket}}">
                     </div>
                     <div class="col-md-6">
                         <label>Ticket</label>
@@ -62,3 +64,4 @@
       </div>
     </div>
   </div>
+@endforeach

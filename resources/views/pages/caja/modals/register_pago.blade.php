@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-md-4">
                         <label>Monto</label>
-                        <input type="text" class=" form-control form-control-sm" name="monto" value="{{$item->monto}}">
+                        <input type="text" id="txt_campo_1" onchange="sumar(this.value);" class=" form-control form-control-sm" name="monto" value="{{$item->monto}}">
                     </div>
                     <div class="col-md-4">
                         <label>Forma de pago</label>
@@ -45,13 +45,14 @@
                     </div>
                     <div class="col-md-4">
                         <label>Monto a pagar</label>
-                        <input type="text"  class=" form-control form-control-sm" name="monto_pagar">
+                        <input type="text"  id="txt_campo_2" onchange="sumar(this.value);"  class="monto form-control form-control-sm" name="monto_pagar">
                     </div>
                 </div>
                 <div class="row">
                     <div style="margin-left:550px">
-                        <label>Saldo</label>
-                        <input type="text" readonly="readonly" class=" form-control form-control-sm" name="saldo">
+                        <label>Saldo:  </label>
+                        <span id="spTotal"></span>
+                        {{-- <input type="text" readonly="readonly"  id="spTotal" class=" form-control form-control-sm" name="saldo"> --}}
                     </div>
                 </div>
             </div>

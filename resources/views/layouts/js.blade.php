@@ -7,3 +7,4 @@
 
 
 <script src="{{asset('js/jquery-datatable.js')}}"></script>
+
